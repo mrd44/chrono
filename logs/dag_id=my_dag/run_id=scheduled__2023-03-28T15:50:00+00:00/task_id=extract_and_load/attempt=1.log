@@ -1,0 +1,37 @@
+[2023-03-28T15:55:02.286+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.extract_and_load scheduled__2023-03-28T15:50:00+00:00 [queued]>
+[2023-03-28T15:55:02.315+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.extract_and_load scheduled__2023-03-28T15:50:00+00:00 [queued]>
+[2023-03-28T15:55:02.318+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-28T15:55:02.326+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 1
+[2023-03-28T15:55:02.334+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-28T15:55:02.383+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_and_load> on 2023-03-28 15:50:00+00:00
+[2023-03-28T15:55:02.399+0000] {standard_task_runner.py:55} INFO - Started process 235 to run task
+[2023-03-28T15:55:02.413+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'extract_and_load', 'scheduled__2023-03-28T15:50:00+00:00', '--job-id', '135', '--raw', '--subdir', 'DAGS_FOLDER/test.py', '--cfg-path', '/tmp/tmp4_dbrn37']
+[2023-03-28T15:55:02.423+0000] {standard_task_runner.py:83} INFO - Job 135: Subtask extract_and_load
+[2023-03-28T15:55:02.581+0000] {task_command.py:388} INFO - Running <TaskInstance: my_dag.extract_and_load scheduled__2023-03-28T15:50:00+00:00 [running]> on host 18cf4662f3ac
+[2023-03-28T15:55:02.923+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=my_dag
+AIRFLOW_CTX_TASK_ID=extract_and_load
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-28T15:50:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-28T15:50:00+00:00
+[2023-03-28T15:55:05.836+0000] {logging_mixin.py:137} INFO -         73                  Not in universe   0   0.1  ...  2   0.8  95   - 50000.
+0       58   Self-employed-not incorporated   4    34  ...  2    52  94   - 50000.
+1       18                  Not in universe   0     0  ...  2     0  95   - 50000.
+2        9                  Not in universe   0     0  ...  0     0  94   - 50000.
+3       10                  Not in universe   0     0  ...  0     0  94   - 50000.
+4       48                          Private  40    10  ...  2    52  95   - 50000.
+...     ..                              ...  ..   ...  ... ..   ...  ..        ...
+199517  87                  Not in universe   0     0  ...  2     0  95   - 50000.
+199518  65       Self-employed-incorporated  37     2  ...  2    52  94   - 50000.
+199519  47                  Not in universe   0     0  ...  2    52  95   - 50000.
+199520  16                  Not in universe   0     0  ...  2     0  95   - 50000.
+199521  32                          Private  42    30  ...  2    52  94   - 50000.
+
+[199522 rows x 42 columns]
+[2023-03-28T15:55:05.875+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-03-28T15:55:05.897+0000] {taskinstance.py:1326} INFO - Marking task as SUCCESS. dag_id=my_dag, task_id=extract_and_load, execution_date=20230328T155000, start_date=20230328T155502, end_date=20230328T155505
+[2023-03-28T15:55:05.990+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-03-28T15:55:06.049+0000] {taskinstance.py:2585} INFO - 1 downstream tasks scheduled from follow-on schedule check

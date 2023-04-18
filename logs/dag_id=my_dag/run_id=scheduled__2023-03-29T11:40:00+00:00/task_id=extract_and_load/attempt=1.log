@@ -1,0 +1,40 @@
+[2023-03-29T11:45:03.237+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.extract_and_load scheduled__2023-03-29T11:40:00+00:00 [queued]>
+[2023-03-29T11:45:03.256+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.extract_and_load scheduled__2023-03-29T11:40:00+00:00 [queued]>
+[2023-03-29T11:45:03.258+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T11:45:03.259+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 1
+[2023-03-29T11:45:03.260+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T11:45:03.287+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_and_load> on 2023-03-29 11:40:00+00:00
+[2023-03-29T11:45:03.297+0000] {standard_task_runner.py:55} INFO - Started process 1216 to run task
+[2023-03-29T11:45:03.310+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'extract_and_load', 'scheduled__2023-03-29T11:40:00+00:00', '--job-id', '347', '--raw', '--subdir', 'DAGS_FOLDER/test.py', '--cfg-path', '/tmp/tmp_uxirs9b']
+[2023-03-29T11:45:03.315+0000] {standard_task_runner.py:83} INFO - Job 347: Subtask extract_and_load
+[2023-03-29T11:45:03.441+0000] {task_command.py:388} INFO - Running <TaskInstance: my_dag.extract_and_load scheduled__2023-03-29T11:40:00+00:00 [running]> on host e7ec0deaf382
+[2023-03-29T11:45:03.580+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=my_dag
+AIRFLOW_CTX_TASK_ID=extract_and_load
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-29T11:40:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-29T11:40:00+00:00
+[2023-03-29T11:45:03.585+0000] {logging_mixin.py:137} INFO - eeeee test-chronotruck test-chr-ml/primary/data.csv
+[2023-03-29T11:45:10.767+0000] {logging_mixin.py:137} INFO - rasssss
+[2023-03-29T11:45:20.361+0000] {gbq.py:606} INFO - 199522 out of 199522 rows loaded.
+[2023-03-29T11:45:20.392+0000] {logging_mixin.py:137} INFO - test ras ggdgg  ssssss          age      sex  ...                    education tax_filer_status
+0        58     Male  ...   Some college but no degree         - 50000.
+1        18   Female  ...                   10th grade         - 50000.
+2         9   Female  ...                     Children         - 50000.
+3        10   Female  ...                     Children         - 50000.
+4        48   Female  ...   Some college but no degree         - 50000.
+...     ...      ...  ...                          ...              ...
+199517   87     Male  ...            7th and 8th grade         - 50000.
+199518   65     Male  ...                   11th grade         - 50000.
+199519   47     Male  ...   Some college but no degree         - 50000.
+199520   16   Female  ...                   10th grade         - 50000.
+199521   32   Female  ...         High school graduate         - 50000.
+
+[199522 rows x 5 columns]
+[2023-03-29T11:45:20.493+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-03-29T11:45:20.526+0000] {taskinstance.py:1326} INFO - Marking task as SUCCESS. dag_id=my_dag, task_id=extract_and_load, execution_date=20230329T114000, start_date=20230329T114503, end_date=20230329T114520
+[2023-03-29T11:45:20.628+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-03-29T11:45:20.686+0000] {taskinstance.py:2585} INFO - 1 downstream tasks scheduled from follow-on schedule check

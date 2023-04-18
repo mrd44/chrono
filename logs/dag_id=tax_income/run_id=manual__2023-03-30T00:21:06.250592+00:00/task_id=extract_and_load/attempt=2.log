@@ -1,0 +1,21 @@
+[2023-03-30T00:24:28.691+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: tax_income.extract_and_load manual__2023-03-30T00:21:06.250592+00:00 [queued]>
+[2023-03-30T00:24:32.549+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: tax_income.extract_and_load manual__2023-03-30T00:21:06.250592+00:00 [queued]>
+[2023-03-30T00:24:32.659+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-30T00:24:32.857+0000] {taskinstance.py:1283} INFO - Starting attempt 2 of 2
+[2023-03-30T00:24:32.985+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-30T00:24:37.002+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_and_load> on 2023-03-30 00:21:06.250592+00:00
+[2023-03-30T00:24:40.483+0000] {standard_task_runner.py:55} INFO - Started process 151 to run task
+[2023-03-30T00:24:40.755+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'tax_income', 'extract_and_load', 'manual__2023-03-30T00:21:06.250592+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/dag_model.py', '--cfg-path', '/tmp/tmp5qhcvbel']
+[2023-03-30T00:24:41.092+0000] {standard_task_runner.py:83} INFO - Job 5: Subtask extract_and_load
+[2023-03-30T00:24:45.758+0000] {task_command.py:388} INFO - Running <TaskInstance: tax_income.extract_and_load manual__2023-03-30T00:21:06.250592+00:00 [running]> on host d8c38a1ae850
+[2023-03-30T00:24:50.130+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=tax_income
+AIRFLOW_CTX_TASK_ID=extract_and_load
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-30T00:21:06.250592+00:00
+AIRFLOW_CTX_TRY_NUMBER=2
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-03-30T00:21:06.250592+00:00
+[2023-03-30T00:24:50.158+0000] {dag_model.py:67} INFO - Starting load_csv_from_bucket function...
+[2023-03-30T00:24:57.625+0000] {dag_model.py:76} INFO - Downloading CSV files from test-chr-ml 

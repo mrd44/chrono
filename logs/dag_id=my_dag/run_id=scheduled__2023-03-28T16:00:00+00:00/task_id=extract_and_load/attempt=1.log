@@ -1,0 +1,63 @@
+[2023-03-28T16:05:03.766+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.extract_and_load scheduled__2023-03-28T16:00:00+00:00 [queued]>
+[2023-03-28T16:05:03.801+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.extract_and_load scheduled__2023-03-28T16:00:00+00:00 [queued]>
+[2023-03-28T16:05:03.803+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-28T16:05:03.805+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 1
+[2023-03-28T16:05:03.807+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-28T16:05:03.844+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_and_load> on 2023-03-28 16:00:00+00:00
+[2023-03-28T16:05:03.854+0000] {standard_task_runner.py:55} INFO - Started process 424 to run task
+[2023-03-28T16:05:03.871+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'extract_and_load', 'scheduled__2023-03-28T16:00:00+00:00', '--job-id', '138', '--raw', '--subdir', 'DAGS_FOLDER/test.py', '--cfg-path', '/tmp/tmpd1_oq4h_']
+[2023-03-28T16:05:03.884+0000] {standard_task_runner.py:83} INFO - Job 138: Subtask extract_and_load
+[2023-03-28T16:05:04.097+0000] {task_command.py:388} INFO - Running <TaskInstance: my_dag.extract_and_load scheduled__2023-03-28T16:00:00+00:00 [running]> on host 18cf4662f3ac
+[2023-03-28T16:05:04.256+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=my_dag
+AIRFLOW_CTX_TASK_ID=extract_and_load
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-28T16:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-28T16:00:00+00:00
+[2023-03-28T16:05:12.273+0000] {python.py:177} INFO - Done. Returned value was:         73                  Not in universe   0   0.1  ...  2   0.8  95   - 50000.
+0       58   Self-employed-not incorporated   4    34  ...  2    52  94   - 50000.
+1       18                  Not in universe   0     0  ...  2     0  95   - 50000.
+2        9                  Not in universe   0     0  ...  0     0  94   - 50000.
+3       10                  Not in universe   0     0  ...  0     0  94   - 50000.
+4       48                          Private  40    10  ...  2    52  95   - 50000.
+...     ..                              ...  ..   ...  ... ..   ...  ..        ...
+199517  87                  Not in universe   0     0  ...  2     0  95   - 50000.
+199518  65       Self-employed-incorporated  37     2  ...  2    52  94   - 50000.
+199519  47                  Not in universe   0     0  ...  2    52  95   - 50000.
+199520  16                  Not in universe   0     0  ...  2     0  95   - 50000.
+199521  32                          Private  42    30  ...  2    52  94   - 50000.
+
+[199522 rows x 42 columns]
+[2023-03-28T16:05:12.380+0000] {xcom.py:635} ERROR - Object of type DataFrame is not JSON serializable. If you are using pickle instead of JSON for XCom, then you need to enable pickle support for XCom in your *** config or make sure to decorate your object with attr.
+[2023-03-28T16:05:12.385+0000] {taskinstance.py:1775} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 72, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 2304, in xcom_push
+    session=session,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 72, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/xcom.py", line 240, in set
+    map_index=map_index,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/xcom.py", line 627, in serialize_value
+    return json.dumps(value, cls=XComEncoder).encode("UTF-8")
+  File "/usr/local/lib/python3.7/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/json.py", line 176, in encode
+    return super().encode(o)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/json.py", line 170, in default
+    return super().default(o)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type DataFrame is not JSON serializable
+[2023-03-28T16:05:12.406+0000] {taskinstance.py:1326} INFO - Marking task as FAILED. dag_id=my_dag, task_id=extract_and_load, execution_date=20230328T160000, start_date=20230328T160503, end_date=20230328T160512
+[2023-03-28T16:05:12.449+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 138 for task extract_and_load (Object of type DataFrame is not JSON serializable; 424)
+[2023-03-28T16:05:12.492+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-03-28T16:05:12.585+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check

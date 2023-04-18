@@ -1,0 +1,44 @@
+[2023-03-29T20:30:58.401+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.model_predict scheduled__2023-03-29T20:25:00+00:00 [queued]>
+[2023-03-29T20:30:58.463+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.model_predict scheduled__2023-03-29T20:25:00+00:00 [queued]>
+[2023-03-29T20:30:58.467+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T20:30:58.470+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 1
+[2023-03-29T20:30:58.472+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T20:30:58.517+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): model_predict> on 2023-03-29 20:25:00+00:00
+[2023-03-29T20:30:58.537+0000] {standard_task_runner.py:55} INFO - Started process 311 to run task
+[2023-03-29T20:30:58.546+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'model_predict', 'scheduled__2023-03-29T20:25:00+00:00', '--job-id', '505', '--raw', '--subdir', 'DAGS_FOLDER/test.py', '--cfg-path', '/tmp/tmpaegn848_']
+[2023-03-29T20:30:58.556+0000] {standard_task_runner.py:83} INFO - Job 505: Subtask model_predict
+[2023-03-29T20:30:58.829+0000] {task_command.py:388} INFO - Running <TaskInstance: my_dag.model_predict scheduled__2023-03-29T20:25:00+00:00 [running]> on host 32688d23169d
+[2023-03-29T20:30:58.990+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=my_dag
+AIRFLOW_CTX_TASK_ID=model_predict
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-29T20:25:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-29T20:25:00+00:00
+[2023-03-29T20:31:03.064+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/google/cloud/bigquery/table.py:1988: UserWarning: A progress bar was requested, but there was an error loading the tqdm library. Please install tqdm to use the progress bar functionality.
+  create_bqstorage_client=create_bqstorage_client,
+
+[2023-03-29T20:31:15.122+0000] {gbq.py:352} INFO - Total time taken 15.64 s.
+Finished at 2023-03-29 20:31:15.
+[2023-03-29T20:31:15.511+0000] {logging_mixin.py:137} INFO - [20:31:15] WARNING: ../src/learner.cc:749: Found JSON model saved before XGBoost 1.6, please save the model using current version again. The support for old JSON model will be discontinued in XGBoost 2.3.
+[2023-03-29T20:31:15.962+0000] {taskinstance.py:1775} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 192, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/test.py", line 120, in model_predict
+    predictions=model_xgb_2.predict(xgb.DMatrix(df))
+  File "/home/airflow/.local/lib/python3.7/site-packages/xgboost/core.py", line 1997, in predict
+    self._validate_features(data)
+  File "/home/airflow/.local/lib/python3.7/site-packages/xgboost/core.py", line 2618, in _validate_features
+    raise ValueError(msg.format(self.feature_names, data.feature_names))
+ValueError: feature_names mismatch: ['age', 'sex_ Female', 'sex_ Male', 'marital_stat_ Divorced', 'marital_stat_ Married-A F spouse present', 'marital_stat_ Married-civilian spouse present', 'marital_stat_ Married-spouse absent', 'marital_stat_ Never married', 'marital_stat_ Separated', 'marital_stat_ Widowed', 'education_ 10th grade', 'education_ 11th grade', 'education_ 12th grade no diploma', 'education_ 1st 2nd 3rd or 4th grade', 'education_ 5th or 6th grade', 'education_ 7th and 8th grade', 'education_ 9th grade', 'education_ Associates degree-academic program', 'education_ Associates degree-occup /vocational', 'education_ Bachelors degree(BA AB BS)', 'education_ Children', 'education_ Doctorate degree(PhD EdD)', 'education_ High school graduate', 'education_ Less than 1st grade', 'education_ Masters degree(MA MS MEng MEd MSW MBA)', 'education_ Prof school degree (MD DDS DVM LLB JD)', 'education_ Some college but no degree', 'tax_filer_stat_ Head of household', 'tax_filer_stat_ Joint both 65+', 'tax_filer_stat_ Joint both under 65', 'tax_filer_stat_ Joint one under 65 & one 65+', 'tax_filer_stat_ Nonfiler', 'tax_filer_stat_ Single'] ['sex_ Female', 'sex_ Male', 'marital_stat_ Divorced', 'marital_stat_ Married-A F spouse present', 'marital_stat_ Married-civilian spouse present', 'marital_stat_ Married-spouse absent', 'marital_stat_ Never married', 'marital_stat_ Separated', 'marital_stat_ Widowed', 'education_ 10th grade', 'education_ 11th grade', 'education_ 12th grade no diploma', 'education_ 1st 2nd 3rd or 4th grade', 'education_ 5th or 6th grade', 'education_ 7th and 8th grade', 'education_ 9th grade', 'education_ Associates degree-academic program', 'education_ Associates degree-occup /vocational', 'education_ Bachelors degree(BA AB BS)', 'education_ Children', 'education_ Doctorate degree(PhD EdD)', 'education_ High school graduate', 'education_ Less than 1st grade', 'education_ Masters degree(MA MS MEng MEd MSW MBA)', 'education_ Prof school degree (MD DDS DVM LLB JD)', 'education_ Some college but no degree', 'tax_filer_stat_ Head of household', 'tax_filer_stat_ Joint both 65+', 'tax_filer_stat_ Joint both under 65', 'tax_filer_stat_ Joint one under 65 & one 65+', 'tax_filer_stat_ Nonfiler', 'tax_filer_stat_ Single']
+expected age in input data
+[2023-03-29T20:31:15.994+0000] {taskinstance.py:1326} INFO - Marking task as FAILED. dag_id=my_dag, task_id=model_predict, execution_date=20230329T202500, start_date=20230329T203058, end_date=20230329T203115
+[2023-03-29T20:31:16.032+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 505 for task model_predict (feature_names mismatch: ['age', 'sex_ Female', 'sex_ Male', 'marital_stat_ Divorced', 'marital_stat_ Married-A F spouse present', 'marital_stat_ Married-civilian spouse present', 'marital_stat_ Married-spouse absent', 'marital_stat_ Never married', 'marital_stat_ Separated', 'marital_stat_ Widowed', 'education_ 10th grade', 'education_ 11th grade', 'education_ 12th grade no diploma', 'education_ 1st 2nd 3rd or 4th grade', 'education_ 5th or 6th grade', 'education_ 7th and 8th grade', 'education_ 9th grade', 'education_ Associates degree-academic program', 'education_ Associates degree-occup /vocational', 'education_ Bachelors degree(BA AB BS)', 'education_ Children', 'education_ Doctorate degree(PhD EdD)', 'education_ High school graduate', 'education_ Less than 1st grade', 'education_ Masters degree(MA MS MEng MEd MSW MBA)', 'education_ Prof school degree (MD DDS DVM LLB JD)', 'education_ Some college but no degree', 'tax_filer_stat_ Head of household', 'tax_filer_stat_ Joint both 65+', 'tax_filer_stat_ Joint both under 65', 'tax_filer_stat_ Joint one under 65 & one 65+', 'tax_filer_stat_ Nonfiler', 'tax_filer_stat_ Single'] ['sex_ Female', 'sex_ Male', 'marital_stat_ Divorced', 'marital_stat_ Married-A F spouse present', 'marital_stat_ Married-civilian spouse present', 'marital_stat_ Married-spouse absent', 'marital_stat_ Never married', 'marital_stat_ Separated', 'marital_stat_ Widowed', 'education_ 10th grade', 'education_ 11th grade', 'education_ 12th grade no diploma', 'education_ 1st 2nd 3rd or 4th grade', 'education_ 5th or 6th grade', 'education_ 7th and 8th grade', 'education_ 9th grade', 'education_ Associates degree-academic program', 'education_ Associates degree-occup /vocational', 'education_ Bachelors degree(BA AB BS)', 'education_ Children', 'education_ Doctorate degree(PhD EdD)', 'education_ High school graduate', 'education_ Less than 1st grade', 'education_ Masters degree(MA MS MEng MEd MSW MBA)', 'education_ Prof school degree (MD DDS DVM LLB JD)', 'education_ Some college but no degree', 'tax_filer_stat_ Head of household', 'tax_filer_stat_ Joint both 65+', 'tax_filer_stat_ Joint both under 65', 'tax_filer_stat_ Joint one under 65 & one 65+', 'tax_filer_stat_ Nonfiler', 'tax_filer_stat_ Single']
+expected age in input data; 311)
+[2023-03-29T20:31:16.135+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-03-29T20:31:16.210+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check

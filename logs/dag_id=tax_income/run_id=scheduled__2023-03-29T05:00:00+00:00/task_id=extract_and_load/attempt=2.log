@@ -1,0 +1,29 @@
+[2023-03-30T09:10:36.323+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: tax_income.extract_and_load scheduled__2023-03-29T05:00:00+00:00 [queued]>
+[2023-03-30T09:10:36.349+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: tax_income.extract_and_load scheduled__2023-03-29T05:00:00+00:00 [queued]>
+[2023-03-30T09:10:36.351+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-30T09:10:36.354+0000] {taskinstance.py:1283} INFO - Starting attempt 2 of 2
+[2023-03-30T09:10:36.356+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-30T09:10:36.403+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_and_load> on 2023-03-29 05:00:00+00:00
+[2023-03-30T09:10:36.419+0000] {standard_task_runner.py:55} INFO - Started process 1533 to run task
+[2023-03-30T09:10:36.439+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'tax_income', 'extract_and_load', 'scheduled__2023-03-29T05:00:00+00:00', '--job-id', '13', '--raw', '--subdir', 'DAGS_FOLDER/dag_model.py', '--cfg-path', '/tmp/tmp_f44l05z']
+[2023-03-30T09:10:36.446+0000] {standard_task_runner.py:83} INFO - Job 13: Subtask extract_and_load
+[2023-03-30T09:10:36.774+0000] {task_command.py:388} INFO - Running <TaskInstance: tax_income.extract_and_load scheduled__2023-03-29T05:00:00+00:00 [running]> on host d8c38a1ae850
+[2023-03-30T09:10:37.341+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=tax_income
+AIRFLOW_CTX_TASK_ID=extract_and_load
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-29T05:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=2
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-29T05:00:00+00:00
+[2023-03-30T09:10:37.366+0000] {dag_model.py:67} INFO - Starting load_csv_from_bucket function...
+[2023-03-30T09:10:37.581+0000] {dag_model.py:76} INFO - Downloading CSV files from test-chr-ml 
+[2023-03-30T09:10:50.147+0000] {dag_model.py:92} INFO - Concatenating CSV files into a single DataFrame...
+[2023-03-30T09:10:56.985+0000] {dag_model.py:100} INFO - Select specific columns and rename them
+[2023-03-30T09:10:59.846+0000] {dag_model.py:107} INFO - Exporting DataFrame to BigQuery...
+[2023-03-30T09:11:07.104+0000] {local_task_job.py:277} WARNING - State of this instance has been externally set to failed. Terminating instance.
+[2023-03-30T09:11:07.128+0000] {process_utils.py:133} INFO - Sending Signals.SIGTERM to group 1533. PIDs of all processes in the group: [1533]
+[2023-03-30T09:11:07.131+0000] {process_utils.py:84} INFO - Sending the signal Signals.SIGTERM to group 1533
+[2023-03-30T09:11:07.133+0000] {taskinstance.py:1482} ERROR - Received SIGTERM. Terminating subprocesses.
+[2023-03-30T09:11:07.270+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=1533, status='terminated', exitcode=0, started='09:10:36') (1533) terminated with exit code 0

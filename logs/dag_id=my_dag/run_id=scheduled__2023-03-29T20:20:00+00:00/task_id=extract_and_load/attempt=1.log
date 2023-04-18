@@ -1,0 +1,33 @@
+[2023-03-29T20:25:04.871+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.extract_and_load scheduled__2023-03-29T20:20:00+00:00 [queued]>
+[2023-03-29T20:25:04.896+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.extract_and_load scheduled__2023-03-29T20:20:00+00:00 [queued]>
+[2023-03-29T20:25:04.898+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T20:25:04.899+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 1
+[2023-03-29T20:25:04.901+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T20:25:04.937+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_and_load> on 2023-03-29 20:20:00+00:00
+[2023-03-29T20:25:04.958+0000] {standard_task_runner.py:55} INFO - Started process 205 to run task
+[2023-03-29T20:25:04.974+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'extract_and_load', 'scheduled__2023-03-29T20:20:00+00:00', '--job-id', '503', '--raw', '--subdir', 'DAGS_FOLDER/test.py', '--cfg-path', '/tmp/tmpgtk_u740']
+[2023-03-29T20:25:04.985+0000] {standard_task_runner.py:83} INFO - Job 503: Subtask extract_and_load
+[2023-03-29T20:25:05.152+0000] {task_command.py:388} INFO - Running <TaskInstance: my_dag.extract_and_load scheduled__2023-03-29T20:20:00+00:00 [running]> on host 32688d23169d
+[2023-03-29T20:25:05.374+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=my_dag
+AIRFLOW_CTX_TASK_ID=extract_and_load
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-29T20:20:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-29T20:20:00+00:00
+[2023-03-29T20:25:05.378+0000] {logging_mixin.py:137} INFO - eeeee test-chronotruck test-chr-ml/primary/data.csv
+[2023-03-29T20:25:21.087+0000] {taskinstance.py:1775} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 192, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/test.py", line 74, in load_csv_from_bucket
+    features=features.iloc[:, [0,12,7,4,19]]
+UnboundLocalError: local variable 'features' referenced before assignment
+[2023-03-29T20:25:21.112+0000] {taskinstance.py:1326} INFO - Marking task as FAILED. dag_id=my_dag, task_id=extract_and_load, execution_date=20230329T202000, start_date=20230329T202504, end_date=20230329T202521
+[2023-03-29T20:25:21.138+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 503 for task extract_and_load (local variable 'features' referenced before assignment; 205)
+[2023-03-29T20:25:21.267+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-03-29T20:25:21.362+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check

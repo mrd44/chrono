@@ -1,0 +1,48 @@
+[2023-03-28T14:46:11.977+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.extract_and_load scheduled__2023-03-28T13:50:00+00:00 [queued]>
+[2023-03-28T14:46:12.092+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.extract_and_load scheduled__2023-03-28T13:50:00+00:00 [queued]>
+[2023-03-28T14:46:12.100+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-28T14:46:12.101+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 1
+[2023-03-28T14:46:12.103+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-28T14:46:12.274+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_and_load> on 2023-03-28 13:50:00+00:00
+[2023-03-28T14:46:12.426+0000] {standard_task_runner.py:55} INFO - Started process 569 to run task
+[2023-03-28T14:46:12.608+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'extract_and_load', 'scheduled__2023-03-28T13:50:00+00:00', '--job-id', '114', '--raw', '--subdir', 'DAGS_FOLDER/test.py', '--cfg-path', '/tmp/tmpiy9xq4tt']
+[2023-03-28T14:46:12.723+0000] {standard_task_runner.py:83} INFO - Job 114: Subtask extract_and_load
+[2023-03-28T14:46:16.031+0000] {task_command.py:388} INFO - Running <TaskInstance: my_dag.extract_and_load scheduled__2023-03-28T13:50:00+00:00 [running]> on host e77fd029e562
+[2023-03-28T14:46:39.604+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=my_dag
+AIRFLOW_CTX_TASK_ID=extract_and_load
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-28T13:50:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-28T13:50:00+00:00
+[2023-03-28T14:46:43.235+0000] {_metadata.py:104} WARNING - Compute Engine Metadata server unavailable on attempt 1 of 3. Reason: timed out
+[2023-03-28T14:46:46.264+0000] {_metadata.py:104} WARNING - Compute Engine Metadata server unavailable on attempt 2 of 3. Reason: timed out
+[2023-03-28T14:46:47.386+0000] {_metadata.py:104} WARNING - Compute Engine Metadata server unavailable on attempt 3 of 3. Reason: [Errno 111] Connection refused
+[2023-03-28T14:46:47.562+0000] {_default.py:297} WARNING - Authentication failed using Compute Engine authentication due to unavailable metadata server.
+[2023-03-28T14:46:47.998+0000] {taskinstance.py:1775} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 192, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/test.py", line 45, in load_csv_from_bucket
+    storage_client = storage.Client()
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/storage/client.py", line 171, in __init__
+    _http=_http,
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/client/__init__.py", line 320, in __init__
+    _ClientProjectMixin.__init__(self, project=project, credentials=credentials)
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/client/__init__.py", line 268, in __init__
+    project = self._determine_default(project)
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/client/__init__.py", line 287, in _determine_default
+    return _determine_default_project(project)
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/_helpers/__init__.py", line 152, in _determine_default_project
+    _, project = google.auth.default()
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/auth/_default.py", line 648, in default
+    raise exceptions.DefaultCredentialsError(_CLOUD_SDK_MISSING_CREDENTIALS)
+google.auth.exceptions.DefaultCredentialsError: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.
+[2023-03-28T14:46:55.045+0000] {taskinstance.py:1326} INFO - Marking task as FAILED. dag_id=my_dag, task_id=extract_and_load, execution_date=20230328T135000, start_date=20230328T144611, end_date=20230328T144654
+[2023-03-28T14:46:58.057+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 114 for task extract_and_load (Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.; 569)
+[2023-03-28T14:47:03.221+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-03-28T14:47:05.193+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check

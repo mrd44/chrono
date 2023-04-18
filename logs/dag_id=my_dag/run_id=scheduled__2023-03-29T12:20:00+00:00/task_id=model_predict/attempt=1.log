@@ -1,0 +1,37 @@
+[2023-03-29T12:26:19.785+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.model_predict scheduled__2023-03-29T12:20:00+00:00 [queued]>
+[2023-03-29T12:26:19.807+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.model_predict scheduled__2023-03-29T12:20:00+00:00 [queued]>
+[2023-03-29T12:26:19.809+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T12:26:19.810+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 1
+[2023-03-29T12:26:19.812+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T12:26:19.838+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): model_predict> on 2023-03-29 12:20:00+00:00
+[2023-03-29T12:26:19.850+0000] {standard_task_runner.py:55} INFO - Started process 1880 to run task
+[2023-03-29T12:26:19.861+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'model_predict', 'scheduled__2023-03-29T12:20:00+00:00', '--job-id', '374', '--raw', '--subdir', 'DAGS_FOLDER/test.py', '--cfg-path', '/tmp/tmplae1g7pb']
+[2023-03-29T12:26:19.867+0000] {standard_task_runner.py:83} INFO - Job 374: Subtask model_predict
+[2023-03-29T12:26:20.004+0000] {task_command.py:388} INFO - Running <TaskInstance: my_dag.model_predict scheduled__2023-03-29T12:20:00+00:00 [running]> on host e7ec0deaf382
+[2023-03-29T12:26:20.172+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=my_dag
+AIRFLOW_CTX_TASK_ID=model_predict
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-29T12:20:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-29T12:20:00+00:00
+[2023-03-29T12:26:23.004+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/google/cloud/bigquery/table.py:1988: UserWarning: A progress bar was requested, but there was an error loading the tqdm library. Please install tqdm to use the progress bar functionality.
+  create_bqstorage_client=create_bqstorage_client,
+
+[2023-03-29T12:26:33.539+0000] {gbq.py:352} INFO - Total time taken 13.21 s.
+Finished at 2023-03-29 12:26:33.
+[2023-03-29T12:26:33.601+0000] {taskinstance.py:1775} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 192, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/test.py", line 154, in model_predict
+    model=pickle.load(open('/opt/airflow/data/model.pkl','rb'))
+ModuleNotFoundError: No module named 'lightgbm'
+[2023-03-29T12:26:33.637+0000] {taskinstance.py:1326} INFO - Marking task as FAILED. dag_id=my_dag, task_id=model_predict, execution_date=20230329T122000, start_date=20230329T122619, end_date=20230329T122633
+[2023-03-29T12:26:33.688+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 374 for task model_predict (No module named 'lightgbm'; 1880)
+[2023-03-29T12:26:33.810+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-03-29T12:26:33.866+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check

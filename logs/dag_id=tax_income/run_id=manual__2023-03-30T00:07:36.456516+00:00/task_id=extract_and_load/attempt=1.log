@@ -1,0 +1,24 @@
+[2023-03-30T00:07:40.550+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: tax_income.extract_and_load manual__2023-03-30T00:07:36.456516+00:00 [queued]>
+[2023-03-30T00:07:40.568+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: tax_income.extract_and_load manual__2023-03-30T00:07:36.456516+00:00 [queued]>
+[2023-03-30T00:07:40.570+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-30T00:07:40.572+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 2
+[2023-03-30T00:07:40.574+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-30T00:07:40.608+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_and_load> on 2023-03-30 00:07:36.456516+00:00
+[2023-03-30T00:07:40.618+0000] {standard_task_runner.py:55} INFO - Started process 332 to run task
+[2023-03-30T00:07:40.628+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'tax_income', 'extract_and_load', 'manual__2023-03-30T00:07:36.456516+00:00', '--job-id', '581', '--raw', '--subdir', 'DAGS_FOLDER/dag_model.py', '--cfg-path', '/tmp/tmp90_adnf3']
+[2023-03-30T00:07:40.633+0000] {standard_task_runner.py:83} INFO - Job 581: Subtask extract_and_load
+[2023-03-30T00:07:40.772+0000] {task_command.py:388} INFO - Running <TaskInstance: tax_income.extract_and_load manual__2023-03-30T00:07:36.456516+00:00 [running]> on host 32688d23169d
+[2023-03-30T00:07:40.917+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=tax_income
+AIRFLOW_CTX_TASK_ID=extract_and_load
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-30T00:07:36.456516+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-03-30T00:07:36.456516+00:00
+[2023-03-30T00:07:40.921+0000] {dag_model.py:67} INFO - Starting load_csv_from_bucket function...
+[2023-03-30T00:07:41.041+0000] {dag_model.py:76} INFO - Downloading CSV files from test-chr-ml 
+[2023-03-30T00:07:41.627+0000] {dag_model.py:87} ERROR - No CSV files found in test-chr-ml/primary/data.csv.
+[2023-03-30T00:07:41.779+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-03-30T00:07:41.851+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check

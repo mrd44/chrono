@@ -1,0 +1,32 @@
+[2023-03-28T00:15:02.044+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.my_task scheduled__2023-03-28T00:10:00+00:00 [queued]>
+[2023-03-28T00:15:02.108+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.my_task scheduled__2023-03-28T00:10:00+00:00 [queued]>
+[2023-03-28T00:15:02.112+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-28T00:15:02.117+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 1
+[2023-03-28T00:15:02.119+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-28T00:15:02.176+0000] {taskinstance.py:1303} INFO - Executing <Task(BashOperator): my_task> on 2023-03-28 00:10:00+00:00
+[2023-03-28T00:15:02.192+0000] {standard_task_runner.py:55} INFO - Started process 670 to run task
+[2023-03-28T00:15:02.203+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'my_task', 'scheduled__2023-03-28T00:10:00+00:00', '--job-id', '8', '--raw', '--subdir', 'DAGS_FOLDER/test.py', '--cfg-path', '/tmp/tmpjl2x9lm3']
+[2023-03-28T00:15:02.206+0000] {standard_task_runner.py:83} INFO - Job 8: Subtask my_task
+[2023-03-28T00:15:02.405+0000] {task_command.py:388} INFO - Running <TaskInstance: my_dag.my_task scheduled__2023-03-28T00:10:00+00:00 [running]> on host 9d96fd24b1ab
+[2023-03-28T00:15:02.568+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=my_dag
+AIRFLOW_CTX_TASK_ID=my_task
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-28T00:10:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-28T00:10:00+00:00
+[2023-03-28T00:15:02.572+0000] {subprocess.py:63} INFO - Tmp dir root location: 
+ /tmp
+[2023-03-28T00:15:02.576+0000] {subprocess.py:75} INFO - Running command: ['/bin/bash', '-c', 'for i in {1..5}; do echo $i; sleep 1; done']
+[2023-03-28T00:15:02.597+0000] {subprocess.py:86} INFO - Output:
+[2023-03-28T00:15:02.604+0000] {subprocess.py:93} INFO - 1
+[2023-03-28T00:15:03.609+0000] {subprocess.py:93} INFO - 2
+[2023-03-28T00:15:04.616+0000] {subprocess.py:93} INFO - 3
+[2023-03-28T00:15:05.624+0000] {subprocess.py:93} INFO - 4
+[2023-03-28T00:15:06.632+0000] {subprocess.py:93} INFO - 5
+[2023-03-28T00:15:07.643+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2023-03-28T00:15:07.697+0000] {taskinstance.py:1326} INFO - Marking task as SUCCESS. dag_id=my_dag, task_id=my_task, execution_date=20230328T001000, start_date=20230328T001502, end_date=20230328T001507
+[2023-03-28T00:15:07.758+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-03-28T00:15:07.795+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check

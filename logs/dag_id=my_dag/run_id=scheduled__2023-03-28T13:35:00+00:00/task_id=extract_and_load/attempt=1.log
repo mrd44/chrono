@@ -1,0 +1,50 @@
+[2023-03-28T13:40:02.024+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.extract_and_load scheduled__2023-03-28T13:35:00+00:00 [queued]>
+[2023-03-28T13:40:02.044+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.extract_and_load scheduled__2023-03-28T13:35:00+00:00 [queued]>
+[2023-03-28T13:40:02.046+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-28T13:40:02.049+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 1
+[2023-03-28T13:40:02.050+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-28T13:40:02.080+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_and_load> on 2023-03-28 13:35:00+00:00
+[2023-03-28T13:40:02.094+0000] {standard_task_runner.py:55} INFO - Started process 316 to run task
+[2023-03-28T13:40:02.100+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'extract_and_load', 'scheduled__2023-03-28T13:35:00+00:00', '--job-id', '111', '--raw', '--subdir', 'DAGS_FOLDER/test.py', '--cfg-path', '/tmp/tmpt3rrs6un']
+[2023-03-28T13:40:02.107+0000] {standard_task_runner.py:83} INFO - Job 111: Subtask extract_and_load
+[2023-03-28T13:40:02.249+0000] {task_command.py:388} INFO - Running <TaskInstance: my_dag.extract_and_load scheduled__2023-03-28T13:35:00+00:00 [running]> on host e77fd029e562
+[2023-03-28T13:40:02.515+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=my_dag
+AIRFLOW_CTX_TASK_ID=extract_and_load
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-28T13:35:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-28T13:35:00+00:00
+[2023-03-28T13:40:02.539+0000] {taskinstance.py:1775} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 192, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/test.py", line 45, in load_csv_from_bucket
+    storage_client = storage.Client()
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/storage/client.py", line 171, in __init__
+    _http=_http,
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/client/__init__.py", line 320, in __init__
+    _ClientProjectMixin.__init__(self, project=project, credentials=credentials)
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/client/__init__.py", line 268, in __init__
+    project = self._determine_default(project)
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/client/__init__.py", line 287, in _determine_default
+    return _determine_default_project(project)
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/_helpers/__init__.py", line 152, in _determine_default_project
+    _, project = google.auth.default()
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/auth/_default.py", line 615, in default
+    credentials, project_id = checker()
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/auth/_default.py", line 608, in <lambda>
+    lambda: _get_explicit_environ_credentials(quota_project_id=quota_project_id),
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/auth/_default.py", line 229, in _get_explicit_environ_credentials
+    os.environ[environment_vars.CREDENTIALS], quota_project_id=quota_project_id
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/auth/_default.py", line 117, in load_credentials_from_file
+    "File {} was not found.".format(filename)
+google.auth.exceptions.DefaultCredentialsError: File /Users/macbook/Documents/ibrahima/test-chronotruck/conf/local/service-account.json was not found.
+[2023-03-28T13:40:02.589+0000] {taskinstance.py:1326} INFO - Marking task as FAILED. dag_id=my_dag, task_id=extract_and_load, execution_date=20230328T133500, start_date=20230328T134002, end_date=20230328T134002
+[2023-03-28T13:40:02.646+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 111 for task extract_and_load (File /Users/macbook/Documents/ibrahima/test-chronotruck/conf/local/service-account.json was not found.; 316)
+[2023-03-28T13:40:02.726+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-03-28T13:40:02.803+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check

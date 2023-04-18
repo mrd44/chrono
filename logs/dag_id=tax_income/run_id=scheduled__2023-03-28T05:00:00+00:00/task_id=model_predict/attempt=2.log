@@ -1,0 +1,63 @@
+[2023-03-29T23:15:59.514+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: tax_income.model_predict scheduled__2023-03-28T05:00:00+00:00 [queued]>
+[2023-03-29T23:15:59.533+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: tax_income.model_predict scheduled__2023-03-28T05:00:00+00:00 [queued]>
+[2023-03-29T23:15:59.535+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T23:15:59.536+0000] {taskinstance.py:1283} INFO - Starting attempt 2 of 2
+[2023-03-29T23:15:59.538+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T23:15:59.569+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): model_predict> on 2023-03-28 05:00:00+00:00
+[2023-03-29T23:15:59.580+0000] {standard_task_runner.py:55} INFO - Started process 277 to run task
+[2023-03-29T23:15:59.589+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'tax_income', 'model_predict', 'scheduled__2023-03-28T05:00:00+00:00', '--job-id', '568', '--raw', '--subdir', 'DAGS_FOLDER/test.py', '--cfg-path', '/tmp/tmptmfa14_n']
+[2023-03-29T23:15:59.595+0000] {standard_task_runner.py:83} INFO - Job 568: Subtask model_predict
+[2023-03-29T23:15:59.721+0000] {task_command.py:388} INFO - Running <TaskInstance: tax_income.model_predict scheduled__2023-03-28T05:00:00+00:00 [running]> on host 32688d23169d
+[2023-03-29T23:15:59.874+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=tax_income
+AIRFLOW_CTX_TASK_ID=model_predict
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-28T05:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=2
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-28T05:00:00+00:00
+[2023-03-29T23:15:59.878+0000] {test.py:130} INFO - Loading data from BigQuery...
+[2023-03-29T23:16:01.552+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/google/cloud/bigquery/table.py:1988: UserWarning: A progress bar was requested, but there was an error loading the tqdm library. Please install tqdm to use the progress bar functionality.
+  create_bqstorage_client=create_bqstorage_client,
+
+[2023-03-29T23:16:15.903+0000] {gbq.py:352} INFO - Total time taken 15.87 s.
+Finished at 2023-03-29 23:16:15.
+[2023-03-29T23:16:15.910+0000] {test.py:145} INFO - One-hot encoding categorical features...
+[2023-03-29T23:16:16.218+0000] {test.py:151} INFO - Loading XGBoost model and performing predictions...
+[2023-03-29T23:16:16.241+0000] {logging_mixin.py:137} INFO - [23:16:16] WARNING: ../src/learner.cc:749: Found JSON model saved before XGBoost 1.6, please save the model using current version again. The support for old JSON model will be discontinued in XGBoost 2.3.
+[2023-03-29T23:16:16.826+0000] {test.py:157} INFO - Adding predictions to DataFrame...
+[2023-03-29T23:16:16.829+0000] {test.py:162} INFO - Exporting DataFrame to BigQuery...
+[2023-03-29T23:16:19.552+0000] {taskinstance.py:1775} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 192, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/test.py", line 174, in model_predict
+    {'name':'predictions','type': 'STRING'}
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas_gbq/gbq.py", line 1205, in to_gbq
+    billing_project=project_id,
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas_gbq/gbq.py", line 599, in load_data
+    billing_project=billing_project,
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas_gbq/load.py", line 246, in load_chunks
+    billing_project=billing_project,
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas_gbq/load.py", line 136, in load_parquet
+    project=billing_project,
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/bigquery/client.py", line 2675, in load_table_from_dataframe
+    parquet_use_compliant_nested_type=True,
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/bigquery/_pandas_helpers.py", line 586, in dataframe_to_parquet
+    arrow_table = dataframe_to_arrow(dataframe, bq_schema)
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/bigquery/_pandas_helpers.py", line 529, in dataframe_to_arrow
+    bq_to_arrow_array(get_column_or_index(dataframe, bq_field.name), bq_field)
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/bigquery/_pandas_helpers.py", line 290, in bq_to_arrow_array
+    return pyarrow.Array.from_pandas(series, type=arrow_type)
+  File "pyarrow/array.pxi", line 1037, in pyarrow.lib.Array.from_pandas
+  File "pyarrow/array.pxi", line 313, in pyarrow.lib.array
+  File "pyarrow/array.pxi", line 83, in pyarrow.lib._ndarray_to_array
+  File "pyarrow/error.pxi", line 123, in pyarrow.lib.check_status
+pyarrow.lib.ArrowTypeError: Expected a string or bytes dtype, got float32
+[2023-03-29T23:16:19.582+0000] {taskinstance.py:1326} INFO - Marking task as FAILED. dag_id=tax_income, task_id=model_predict, execution_date=20230328T050000, start_date=20230329T231559, end_date=20230329T231619
+[2023-03-29T23:16:19.612+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 568 for task model_predict (Expected a string or bytes dtype, got float32; 277)
+[2023-03-29T23:16:19.688+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-03-29T23:16:19.777+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check

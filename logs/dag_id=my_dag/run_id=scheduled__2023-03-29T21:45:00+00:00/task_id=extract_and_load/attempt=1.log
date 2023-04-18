@@ -1,0 +1,30 @@
+[2023-03-29T21:50:03.134+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.extract_and_load scheduled__2023-03-29T21:45:00+00:00 [queued]>
+[2023-03-29T21:50:03.166+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.extract_and_load scheduled__2023-03-29T21:45:00+00:00 [queued]>
+[2023-03-29T21:50:03.169+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T21:50:03.171+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 1
+[2023-03-29T21:50:03.172+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T21:50:03.232+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_and_load> on 2023-03-29 21:45:00+00:00
+[2023-03-29T21:50:03.246+0000] {standard_task_runner.py:55} INFO - Started process 1789 to run task
+[2023-03-29T21:50:03.259+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'extract_and_load', 'scheduled__2023-03-29T21:45:00+00:00', '--job-id', '535', '--raw', '--subdir', 'DAGS_FOLDER/test.py', '--cfg-path', '/tmp/tmplswn7fsj']
+[2023-03-29T21:50:03.265+0000] {standard_task_runner.py:83} INFO - Job 535: Subtask extract_and_load
+[2023-03-29T21:50:03.565+0000] {task_command.py:388} INFO - Running <TaskInstance: my_dag.extract_and_load scheduled__2023-03-29T21:45:00+00:00 [running]> on host 32688d23169d
+[2023-03-29T21:50:03.957+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=my_dag
+AIRFLOW_CTX_TASK_ID=extract_and_load
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-29T21:45:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-29T21:45:00+00:00
+[2023-03-29T21:50:03.964+0000] {test.py:59} INFO - Starting load_csv_from_bucket function...
+[2023-03-29T21:50:04.109+0000] {test.py:68} INFO - Downloading CSV files from test-chr-ml/primary/data.csv 
+[2023-03-29T21:50:11.033+0000] {test.py:82} INFO - Concatenating CSV files into a single DataFrame...
+[2023-03-29T21:50:14.521+0000] {test.py:90} INFO - Select specific columns and rename them
+[2023-03-29T21:50:14.762+0000] {test.py:97} INFO - Exporting DataFrame to BigQuery...
+[2023-03-29T21:50:27.488+0000] {gbq.py:606} INFO - 199522 out of 199522 rows loaded.
+[2023-03-29T21:50:27.491+0000] {test.py:114} INFO - Finished load_csv_from_bucket function.
+[2023-03-29T21:50:27.494+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-03-29T21:50:27.577+0000] {taskinstance.py:1326} INFO - Marking task as SUCCESS. dag_id=my_dag, task_id=extract_and_load, execution_date=20230329T214500, start_date=20230329T215003, end_date=20230329T215027
+[2023-03-29T21:50:27.674+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-03-29T21:50:27.709+0000] {taskinstance.py:2585} INFO - 1 downstream tasks scheduled from follow-on schedule check

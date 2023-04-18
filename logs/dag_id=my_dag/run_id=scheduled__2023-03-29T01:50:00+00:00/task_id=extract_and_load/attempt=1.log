@@ -1,0 +1,42 @@
+[2023-03-29T01:59:15.809+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.extract_and_load scheduled__2023-03-29T01:50:00+00:00 [queued]>
+[2023-03-29T01:59:16.075+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.extract_and_load scheduled__2023-03-29T01:50:00+00:00 [queued]>
+[2023-03-29T01:59:16.078+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T01:59:16.089+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 1
+[2023-03-29T01:59:16.125+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T01:59:17.086+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_and_load> on 2023-03-29 01:50:00+00:00
+[2023-03-29T01:59:19.497+0000] {standard_task_runner.py:55} INFO - Started process 1119 to run task
+[2023-03-29T01:59:20.611+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'extract_and_load', 'scheduled__2023-03-29T01:50:00+00:00', '--job-id', '292', '--raw', '--subdir', 'DAGS_FOLDER/test.py', '--cfg-path', '/tmp/tmprhdk5jq1']
+[2023-03-29T01:59:20.821+0000] {standard_task_runner.py:83} INFO - Job 292: Subtask extract_and_load
+[2023-03-29T01:59:23.108+0000] {task_command.py:388} INFO - Running <TaskInstance: my_dag.extract_and_load scheduled__2023-03-29T01:50:00+00:00 [running]> on host 18cf4662f3ac
+[2023-03-29T01:59:24.341+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=my_dag
+AIRFLOW_CTX_TASK_ID=extract_and_load
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-29T01:50:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-29T01:50:00+00:00
+[2023-03-29T01:59:24.347+0000] {logging_mixin.py:137} INFO - eeeee test-chronotruck test-chr-ml/primary/data.csv
+[2023-03-29T02:01:31.995+0000] {logging_mixin.py:137} INFO - rasssss
+[2023-03-29T02:02:03.088+0000] {gbq.py:606} INFO - 171057 out of 171057 rows loaded.
+[2023-03-29T02:02:04.133+0000] {logging_mixin.py:137} INFO - test ras ggdgg  ssssss          age      sex  ...                    education tax_filer_status
+0        58     Male  ...   Some college but no degree         - 50000.
+1        18   Female  ...                   10th grade         - 50000.
+2         9   Female  ...                     Children         - 50000.
+3        10   Female  ...                     Children         - 50000.
+4        48   Female  ...   Some college but no degree         - 50000.
+...     ...      ...  ...                          ...              ...
+171052   40     Male  ...     1st 2nd 3rd or 4th grade         - 50000.
+171053   34     Male  ...         High school graduate         - 50000.
+171054    5     Male  ...                     Children         - 50000.
+171055   24   Female  ...         High school graduate         - 50000.
+171056    2      NaN  ...                          NaN              NaN
+
+[171057 rows x 5 columns]
+[2023-03-29T02:02:06.688+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-03-29T02:02:08.002+0000] {taskinstance.py:1326} INFO - Marking task as SUCCESS. dag_id=my_dag, task_id=extract_and_load, execution_date=20230329T015000, start_date=20230329T015915, end_date=20230329T020207
+[2023-03-29T02:02:20.859+0000] {local_task_job.py:277} WARNING - State of this instance has been externally set to success. Terminating instance.
+[2023-03-29T02:02:22.054+0000] {process_utils.py:133} INFO - Sending Signals.SIGTERM to group 1119. PIDs of all processes in the group: [1119]
+[2023-03-29T02:02:22.129+0000] {process_utils.py:84} INFO - Sending the signal Signals.SIGTERM to group 1119
+[2023-03-29T02:02:24.305+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=1119, status='terminated', exitcode=0, started='01:59:19') (1119) terminated with exit code 0

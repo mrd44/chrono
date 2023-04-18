@@ -1,0 +1,44 @@
+[2023-03-29T02:05:58.340+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.extract_and_load scheduled__2023-03-29T02:00:00+00:00 [queued]>
+[2023-03-29T02:05:58.594+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.extract_and_load scheduled__2023-03-29T02:00:00+00:00 [queued]>
+[2023-03-29T02:05:58.596+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T02:05:58.598+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 1
+[2023-03-29T02:05:58.600+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T02:05:58.839+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_and_load> on 2023-03-29 02:00:00+00:00
+[2023-03-29T02:06:00.203+0000] {standard_task_runner.py:55} INFO - Started process 1257 to run task
+[2023-03-29T02:06:03.889+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'extract_and_load', 'scheduled__2023-03-29T02:00:00+00:00', '--job-id', '300', '--raw', '--subdir', 'DAGS_FOLDER/test.py', '--cfg-path', '/tmp/tmps15r1do0']
+[2023-03-29T02:06:04.320+0000] {standard_task_runner.py:83} INFO - Job 300: Subtask extract_and_load
+[2023-03-29T02:06:11.734+0000] {task_command.py:388} INFO - Running <TaskInstance: my_dag.extract_and_load scheduled__2023-03-29T02:00:00+00:00 [running]> on host 18cf4662f3ac
+[2023-03-29T02:06:19.728+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=my_dag
+AIRFLOW_CTX_TASK_ID=extract_and_load
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-29T02:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-29T02:00:00+00:00
+[2023-03-29T02:06:19.830+0000] {logging_mixin.py:137} INFO - eeeee test-chronotruck test-chr-ml/primary/data.csv
+[2023-03-29T02:13:42.288+0000] {logging_mixin.py:137} INFO - rasssss
+[2023-03-29T02:25:53.207+0000] {gbq.py:606} INFO - 199522 out of 199522 rows loaded.
+[2023-03-29T02:26:23.292+0000] {logging_mixin.py:137} INFO - test ras ggdgg  ssssss          age      sex  ...                    education tax_filer_status
+0        58     Male  ...   Some college but no degree         - 50000.
+1        18   Female  ...                   10th grade         - 50000.
+2         9   Female  ...                     Children         - 50000.
+3        10   Female  ...                     Children         - 50000.
+4        48   Female  ...   Some college but no degree         - 50000.
+...     ...      ...  ...                          ...              ...
+199517   87     Male  ...            7th and 8th grade         - 50000.
+199518   65     Male  ...                   11th grade         - 50000.
+199519   47     Male  ...   Some college but no degree         - 50000.
+199520   16   Female  ...                   10th grade         - 50000.
+199521   32   Female  ...         High school graduate         - 50000.
+
+[199522 rows x 5 columns]
+[2023-03-29T02:27:56.520+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-03-29T02:28:22.966+0000] {taskinstance.py:1326} INFO - Marking task as SUCCESS. dag_id=my_dag, task_id=extract_and_load, execution_date=20230329T020000, start_date=20230329T020558, end_date=20230329T022822
+[2023-03-29T02:29:15.765+0000] {local_task_job.py:277} WARNING - State of this instance has been externally set to success. Terminating instance.
+[2023-03-29T02:29:19.512+0000] {process_utils.py:133} INFO - Sending Signals.SIGTERM to group 1257. PIDs of all processes in the group: [1257]
+[2023-03-29T02:29:20.786+0000] {process_utils.py:84} INFO - Sending the signal Signals.SIGTERM to group 1257
+[2023-03-29T02:30:20.838+0000] {process_utils.py:147} WARNING - process psutil.Process(pid=1257, name='airflow task ru', status='running', started='02:05:59') did not respond to SIGTERM. Trying SIGKILL
+[2023-03-29T02:30:29.277+0000] {process_utils.py:84} INFO - Sending the signal Signals.SIGKILL to group 1257
+[2023-03-29T02:30:41.619+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=1257, name='airflow task ru', status='terminated', exitcode=0, started='02:05:59') (1257) terminated with exit code 0

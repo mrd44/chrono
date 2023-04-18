@@ -1,0 +1,36 @@
+[2023-03-30T00:36:41.738+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: tax_income.model_predict manual__2023-03-30T00:35:58.905087+00:00 [queued]>
+[2023-03-30T00:36:41.769+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: tax_income.model_predict manual__2023-03-30T00:35:58.905087+00:00 [queued]>
+[2023-03-30T00:36:41.770+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-30T00:36:41.773+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 2
+[2023-03-30T00:36:41.775+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-30T00:36:41.805+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): model_predict> on 2023-03-30 00:35:58.905087+00:00
+[2023-03-30T00:36:41.816+0000] {standard_task_runner.py:55} INFO - Started process 81 to run task
+[2023-03-30T00:36:41.824+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'tax_income', 'model_predict', 'manual__2023-03-30T00:35:58.905087+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/dag_model.py', '--cfg-path', '/tmp/tmpfyn47rsq']
+[2023-03-30T00:36:41.831+0000] {standard_task_runner.py:83} INFO - Job 9: Subtask model_predict
+[2023-03-30T00:36:41.947+0000] {task_command.py:388} INFO - Running <TaskInstance: tax_income.model_predict manual__2023-03-30T00:35:58.905087+00:00 [running]> on host d8c38a1ae850
+[2023-03-30T00:36:42.093+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=tax_income
+AIRFLOW_CTX_TASK_ID=model_predict
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-30T00:35:58.905087+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-03-30T00:35:58.905087+00:00
+[2023-03-30T00:36:42.102+0000] {dag_model.py:131} INFO - Loading data from BigQuery...
+[2023-03-30T00:36:45.281+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/google/cloud/bigquery/table.py:1988: UserWarning: A progress bar was requested, but there was an error loading the tqdm library. Please install tqdm to use the progress bar functionality.
+  create_bqstorage_client=create_bqstorage_client,
+
+[2023-03-30T00:37:00.825+0000] {gbq.py:352} INFO - Total time taken 18.56 s.
+Finished at 2023-03-30 00:37:00.
+[2023-03-30T00:37:00.826+0000] {dag_model.py:146} INFO - One-hot encoding categorical features...
+[2023-03-30T00:37:00.948+0000] {dag_model.py:152} INFO - Loading XGBoost model and performing predictions...
+[2023-03-30T00:37:01.044+0000] {logging_mixin.py:137} INFO - [00:37:01] WARNING: ../src/learner.cc:749: Found JSON model saved before XGBoost 1.6, please save the model using current version again. The support for old JSON model will be discontinued in XGBoost 2.3.
+[2023-03-30T00:37:01.622+0000] {dag_model.py:158} INFO - Adding predictions to DataFrame...
+[2023-03-30T00:37:01.794+0000] {dag_model.py:164} INFO - Exporting DataFrame to BigQuery...
+[2023-03-30T00:37:09.046+0000] {gbq.py:606} INFO - 199522 out of 199522 rows loaded.
+[2023-03-30T00:37:09.054+0000] {dag_model.py:180} INFO - Finished model_predict function.
+[2023-03-30T00:37:09.059+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-03-30T00:37:09.112+0000] {taskinstance.py:1326} INFO - Marking task as SUCCESS. dag_id=tax_income, task_id=model_predict, execution_date=20230330T003558, start_date=20230330T003641, end_date=20230330T003709
+[2023-03-30T00:37:09.307+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-03-30T00:37:09.361+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check

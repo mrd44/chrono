@@ -1,0 +1,62 @@
+[2023-03-29T23:53:21.163+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: tax_income.extract_and_load manual__2023-03-29T23:49:39.928420+00:00 [queued]>
+[2023-03-29T23:53:21.231+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: tax_income.extract_and_load manual__2023-03-29T23:49:39.928420+00:00 [queued]>
+[2023-03-29T23:53:21.235+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T23:53:21.238+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 2
+[2023-03-29T23:53:21.240+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T23:53:21.301+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): extract_and_load> on 2023-03-29 23:49:39.928420+00:00
+[2023-03-29T23:53:21.347+0000] {standard_task_runner.py:55} INFO - Started process 62 to run task
+[2023-03-29T23:53:21.368+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'tax_income', 'extract_and_load', 'manual__2023-03-29T23:49:39.928420+00:00', '--job-id', '572', '--raw', '--subdir', 'DAGS_FOLDER/test.py', '--cfg-path', '/tmp/tmptp20dnv1']
+[2023-03-29T23:53:21.426+0000] {standard_task_runner.py:83} INFO - Job 572: Subtask extract_and_load
+[2023-03-29T23:53:22.742+0000] {task_command.py:388} INFO - Running <TaskInstance: tax_income.extract_and_load manual__2023-03-29T23:49:39.928420+00:00 [running]> on host 32688d23169d
+[2023-03-29T23:53:23.088+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=tax_income
+AIRFLOW_CTX_TASK_ID=extract_and_load
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-29T23:49:39.928420+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-03-29T23:49:39.928420+00:00
+[2023-03-29T23:53:23.097+0000] {test.py:66} INFO - Starting load_csv_from_bucket function...
+[2023-03-29T23:53:23.397+0000] {test.py:75} INFO - Downloading CSV files from test-chr-ml 
+[2023-03-29T23:54:01.293+0000] {test.py:91} INFO - Concatenating CSV files into a single DataFrame...
+[2023-03-29T23:54:09.811+0000] {test.py:99} INFO - Select specific columns and rename them
+[2023-03-29T23:54:11.165+0000] {test.py:106} INFO - Exporting DataFrame to BigQuery...
+[2023-03-29T23:54:14.113+0000] {taskinstance.py:1775} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas_gbq/gbq.py", line 1329, in create
+    self.client.create_table(table)
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/bigquery/client.py", line 755, in create_table
+    timeout=timeout,
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/bigquery/client.py", line 782, in _call_api
+    return call()
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/api_core/retry.py", line 288, in retry_wrapped_func
+    on_error=on_error,
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/api_core/retry.py", line 190, in retry_target
+    return target()
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/_http/__init__.py", line 494, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.Conflict: 409 POST https://bigquery.googleapis.com/bigquery/v2/projects/test-chronotruck/datasets/datawarehouse/tables?prettyPrint=false: Already Exists: Table test-chronotruck:datawarehouse.tax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 192, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/test.py", line 118, in load_csv_from_bucket
+    {'name':'tax_filer_stat','type': 'STRING'}
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas_gbq/gbq.py", line 1175, in to_gbq
+    project_id_table, dataset_id, table_id, table_schema
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas_gbq/gbq.py", line 615, in delete_and_recreate_table
+    table.create(table_id, table_schema)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas_gbq/gbq.py", line 1331, in create
+    self.process_http_error(ex)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas_gbq/gbq.py", line 386, in process_http_error
+    raise GenericGBQException("Reason: {0}".format(ex))
+pandas_gbq.exceptions.GenericGBQException: Reason: 409 POST https://bigquery.googleapis.com/bigquery/v2/projects/test-chronotruck/datasets/datawarehouse/tables?prettyPrint=false: Already Exists: Table test-chronotruck:datawarehouse.tax
+[2023-03-29T23:54:14.242+0000] {taskinstance.py:1326} INFO - Marking task as UP_FOR_RETRY. dag_id=tax_income, task_id=extract_and_load, execution_date=20230329T234939, start_date=20230329T235321, end_date=20230329T235414
+[2023-03-29T23:54:14.340+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 572 for task extract_and_load (Reason: 409 POST https://bigquery.googleapis.com/bigquery/v2/projects/test-chronotruck/datasets/datawarehouse/tables?prettyPrint=false: Already Exists: Table test-chronotruck:datawarehouse.tax; 62)
+[2023-03-29T23:54:14.596+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-03-29T23:54:14.939+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check

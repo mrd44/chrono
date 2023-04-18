@@ -1,0 +1,42 @@
+[2023-03-28T23:15:46.513+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.load_predict scheduled__2023-03-28T23:10:00+00:00 [queued]>
+[2023-03-28T23:15:46.552+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.load_predict scheduled__2023-03-28T23:10:00+00:00 [queued]>
+[2023-03-28T23:15:46.553+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-28T23:15:46.556+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 1
+[2023-03-28T23:15:46.558+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-28T23:15:46.604+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): load_predict> on 2023-03-28 23:10:00+00:00
+[2023-03-28T23:15:46.630+0000] {standard_task_runner.py:55} INFO - Started process 4104 to run task
+[2023-03-28T23:15:46.646+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'load_predict', 'scheduled__2023-03-28T23:10:00+00:00', '--job-id', '250', '--raw', '--subdir', 'DAGS_FOLDER/test.py', '--cfg-path', '/tmp/tmpmwcad5c6']
+[2023-03-28T23:15:46.654+0000] {standard_task_runner.py:83} INFO - Job 250: Subtask load_predict
+[2023-03-28T23:15:47.008+0000] {task_command.py:388} INFO - Running <TaskInstance: my_dag.load_predict scheduled__2023-03-28T23:10:00+00:00 [running]> on host 18cf4662f3ac
+[2023-03-28T23:15:47.323+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=my_dag
+AIRFLOW_CTX_TASK_ID=load_predict
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-28T23:10:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-28T23:10:00+00:00
+[2023-03-28T23:15:51.535+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/google/cloud/bigquery/table.py:1988: UserWarning: A progress bar was requested, but there was an error loading the tqdm library. Please install tqdm to use the progress bar functionality.
+  create_bqstorage_client=create_bqstorage_client,
+
+[2023-03-28T23:16:37.112+0000] {gbq.py:352} INFO - Total time taken 49.16 s.
+Finished at 2023-03-28 23:16:37.
+[2023-03-28T23:16:37.138+0000] {logging_mixin.py:137} INFO - testtttt          age      sex
+0          0     Male
+1          0     Male
+2          0     Male
+3          0     Male
+4          0     Male
+...      ...      ...
+2098321   90   Female
+2098322   90   Female
+2098323   90   Female
+2098324   90   Female
+2098325   90   Female
+
+[2098326 rows x 2 columns]
+[2023-03-28T23:16:37.145+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-03-28T23:16:37.175+0000] {taskinstance.py:1326} INFO - Marking task as SUCCESS. dag_id=my_dag, task_id=load_predict, execution_date=20230328T231000, start_date=20230328T231546, end_date=20230328T231637
+[2023-03-28T23:16:37.322+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-03-28T23:16:37.372+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check

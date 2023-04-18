@@ -1,0 +1,124 @@
+[2023-03-29T11:01:17.076+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.load_predict scheduled__2023-03-29T10:55:00+00:00 [queued]>
+[2023-03-29T11:01:17.100+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.load_predict scheduled__2023-03-29T10:55:00+00:00 [queued]>
+[2023-03-29T11:01:17.102+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T11:01:17.104+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 1
+[2023-03-29T11:01:17.106+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T11:01:17.147+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): load_predict> on 2023-03-29 10:55:00+00:00
+[2023-03-29T11:01:17.162+0000] {standard_task_runner.py:55} INFO - Started process 590 to run task
+[2023-03-29T11:01:17.178+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'load_predict', 'scheduled__2023-03-29T10:55:00+00:00', '--job-id', '324', '--raw', '--subdir', 'DAGS_FOLDER/test.py', '--cfg-path', '/tmp/tmpwnepximg']
+[2023-03-29T11:01:17.183+0000] {standard_task_runner.py:83} INFO - Job 324: Subtask load_predict
+[2023-03-29T11:01:17.342+0000] {task_command.py:388} INFO - Running <TaskInstance: my_dag.load_predict scheduled__2023-03-29T10:55:00+00:00 [running]> on host e7ec0deaf382
+[2023-03-29T11:01:17.501+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=my_dag
+AIRFLOW_CTX_TASK_ID=load_predict
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-29T10:55:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-29T10:55:00+00:00
+[2023-03-29T11:13:53.711+0000] {taskinstance.py:1775} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 710, in urlopen
+    chunked=chunked,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 449, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 444, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/local/lib/python3.7/http/client.py", line 1373, in getresponse
+    response.begin()
+  File "/usr/local/lib/python3.7/http/client.py", line 319, in begin
+    version, status, reason = self._read_status()
+  File "/usr/local/lib/python3.7/http/client.py", line 288, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/adapters.py", line 499, in send
+    timeout=timeout,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/util/retry.py", line 550, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/packages/six.py", line 769, in reraise
+    raise value.with_traceback(tb)
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 710, in urlopen
+    chunked=chunked,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 449, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 444, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/local/lib/python3.7/http/client.py", line 1373, in getresponse
+    response.begin()
+  File "/usr/local/lib/python3.7/http/client.py", line 319, in begin
+    version, status, reason = self._read_status()
+  File "/usr/local/lib/python3.7/http/client.py", line 288, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/api_core/retry.py", line 190, in retry_target
+    return target()
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/_http/__init__.py", line 490, in api_request
+    extra_api_info=extra_api_info,
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/_http/__init__.py", line 342, in _make_request
+    method, url, headers, data, target_object, timeout=timeout
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/_http/__init__.py", line 380, in _do_request
+    url=url, method=method, headers=headers, data=data, timeout=timeout
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/auth/transport/requests.py", line 555, in request
+    **kwargs
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/adapters.py", line 547, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas_gbq/gbq.py", line 473, in run_query
+    project=self.project_id,
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/bigquery/client.py", line 3390, in query
+    future = do_query()
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/bigquery/client.py", line 3367, in do_query
+    query_job._begin(retry=retry, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/bigquery/job/query.py", line 1298, in _begin
+    super(QueryJob, self)._begin(client=client, retry=retry, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/bigquery/job/base.py", line 518, in _begin
+    timeout=timeout,
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/bigquery/client.py", line 782, in _call_api
+    return call()
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/api_core/retry.py", line 288, in retry_wrapped_func
+    on_error=on_error,
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/api_core/retry.py", line 210, in retry_target
+    ) from last_exc
+google.api_core.exceptions.RetryError: Deadline of 600.0s exceeded while calling target function, last exception: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 192, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/test.py", line 105, in transform_tax
+    credentials=CREDENTIALS
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas_gbq/gbq.py", line 926, in read_gbq
+    dtypes=dtypes,
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas_gbq/gbq.py", line 485, in run_query
+    self.process_http_error(ex)
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas_gbq/gbq.py", line 386, in process_http_error
+    raise GenericGBQException("Reason: {0}".format(ex))
+pandas_gbq.exceptions.GenericGBQException: Reason: Deadline of 600.0s exceeded while calling target function, last exception: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[2023-03-29T11:13:55.706+0000] {taskinstance.py:1326} INFO - Marking task as FAILED. dag_id=my_dag, task_id=load_predict, execution_date=20230329T105500, start_date=20230329T110117, end_date=20230329T111355
+[2023-03-29T11:14:01.103+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 324 for task load_predict (Reason: Deadline of 600.0s exceeded while calling target function, last exception: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')); 590)
+[2023-03-29T11:14:08.636+0000] {local_task_job.py:212} INFO - Task exited with return code 1
+[2023-03-29T11:14:13.067+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check

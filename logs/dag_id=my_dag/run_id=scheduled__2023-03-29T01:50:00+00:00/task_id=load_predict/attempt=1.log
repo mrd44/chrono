@@ -1,0 +1,22 @@
+[2023-03-29T02:03:51.625+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.load_predict scheduled__2023-03-29T01:50:00+00:00 [queued]>
+[2023-03-29T02:03:54.904+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.load_predict scheduled__2023-03-29T01:50:00+00:00 [queued]>
+[2023-03-29T02:03:54.933+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T02:03:54.945+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 1
+[2023-03-29T02:03:54.950+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T02:03:59.347+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): load_predict> on 2023-03-29 01:50:00+00:00
+[2023-03-29T02:04:03.060+0000] {standard_task_runner.py:55} INFO - Started process 1218 to run task
+[2023-03-29T02:04:03.129+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'load_predict', 'scheduled__2023-03-29T01:50:00+00:00', '--job-id', '298', '--raw', '--subdir', 'DAGS_FOLDER/test.py', '--cfg-path', '/tmp/tmp5ihfmc1o']
+[2023-03-29T02:04:03.180+0000] {standard_task_runner.py:83} INFO - Job 298: Subtask load_predict
+[2023-03-29T02:04:04.770+0000] {task_command.py:388} INFO - Running <TaskInstance: my_dag.load_predict scheduled__2023-03-29T01:50:00+00:00 [running]> on host 18cf4662f3ac
+[2023-03-29T02:04:05.739+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=my_dag
+AIRFLOW_CTX_TASK_ID=load_predict
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-29T01:50:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-29T01:50:00+00:00
+[2023-03-29T02:04:11.182+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/google/cloud/bigquery/table.py:1988: UserWarning: A progress bar was requested, but there was an error loading the tqdm library. Please install tqdm to use the progress bar functionality.
+  create_bqstorage_client=create_bqstorage_client,
+

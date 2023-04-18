@@ -1,0 +1,84 @@
+[2023-03-29T10:30:45.177+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: my_dag.load_predict scheduled__2023-03-29T10:25:00+00:00 [queued]>
+[2023-03-29T10:30:45.197+0000] {taskinstance.py:1084} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: my_dag.load_predict scheduled__2023-03-29T10:25:00+00:00 [queued]>
+[2023-03-29T10:30:45.199+0000] {taskinstance.py:1282} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T10:30:45.200+0000] {taskinstance.py:1283} INFO - Starting attempt 1 of 1
+[2023-03-29T10:30:45.202+0000] {taskinstance.py:1284} INFO - 
+--------------------------------------------------------------------------------
+[2023-03-29T10:30:45.233+0000] {taskinstance.py:1303} INFO - Executing <Task(PythonOperator): load_predict> on 2023-03-29 10:25:00+00:00
+[2023-03-29T10:30:45.244+0000] {standard_task_runner.py:55} INFO - Started process 399 to run task
+[2023-03-29T10:30:45.256+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'my_dag', 'load_predict', 'scheduled__2023-03-29T10:25:00+00:00', '--job-id', '315', '--raw', '--subdir', 'DAGS_FOLDER/test.py', '--cfg-path', '/tmp/tmps3nk519h']
+[2023-03-29T10:30:45.273+0000] {standard_task_runner.py:83} INFO - Job 315: Subtask load_predict
+[2023-03-29T10:30:45.501+0000] {task_command.py:388} INFO - Running <TaskInstance: my_dag.load_predict scheduled__2023-03-29T10:25:00+00:00 [running]> on host e7ec0deaf382
+[2023-03-29T10:30:45.699+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=my_dag
+AIRFLOW_CTX_TASK_ID=load_predict
+AIRFLOW_CTX_EXECUTION_DATE=2023-03-29T10:25:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2023-03-29T10:25:00+00:00
+[2023-03-29T10:30:51.538+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/google/cloud/bigquery/table.py:1988: UserWarning: A progress bar was requested, but there was an error loading the tqdm library. Please install tqdm to use the progress bar functionality.
+  create_bqstorage_client=create_bqstorage_client,
+
+[2023-03-29T10:34:32.430+0000] {gbq.py:352} INFO - Total time taken 226.56 s.
+Finished at 2023-03-29 10:34:32.
+[2023-03-29T10:57:05.963+0000] {logging_mixin.py:137} INFO -          age  sex  ...                                education tax_filer_status
+0          0    1  ...                                 Children         - 50000.
+1          0    1  ...                                 Children         - 50000.
+2          0    1  ...                                 Children         - 50000.
+3          0    0  ...                                 Children         - 50000.
+4          0    1  ...                                 Children         - 50000.
+...      ...  ...  ...                                      ...              ...
+4142233   88    1  ...   Prof school degree (MD DDS DVM LLB JD)          50000+.
+4142234   90    1  ...   Prof school degree (MD DDS DVM LLB JD)         - 50000.
+4142235   90    1  ...   Prof school degree (MD DDS DVM LLB JD)          50000+.
+4142236   90    1  ...   Prof school degree (MD DDS DVM LLB JD)          50000+.
+4142237   90    0  ...   Prof school degree (MD DDS DVM LLB JD)          50000+.
+
+[4142238 rows x 5 columns] gffffgg
+[2023-03-29T10:57:15.137+0000] {logging_mixin.py:137} INFO -          age  sex  ...                                education tax_filer_status
+0          0    1  ...                                 Children         - 50000.
+1          0    1  ...                                 Children         - 50000.
+2          0    1  ...                                 Children         - 50000.
+3          0    0  ...                                 Children         - 50000.
+4          0    1  ...                                 Children         - 50000.
+...      ...  ...  ...                                      ...              ...
+4142233   88    1  ...   Prof school degree (MD DDS DVM LLB JD)          50000+.
+4142234   90    1  ...   Prof school degree (MD DDS DVM LLB JD)         - 50000.
+4142235   90    1  ...   Prof school degree (MD DDS DVM LLB JD)          50000+.
+4142236   90    1  ...   Prof school degree (MD DDS DVM LLB JD)          50000+.
+4142237   90    0  ...   Prof school degree (MD DDS DVM LLB JD)          50000+.
+
+[4142238 rows x 5 columns] gffffgg
+[2023-03-29T10:57:28.258+0000] {logging_mixin.py:137} INFO -          age  sex  marital_status  education tax_filer_status
+0          0    1               4         10         - 50000.
+1          0    1               4         10         - 50000.
+2          0    1               4         10         - 50000.
+3          0    0               4         10         - 50000.
+4          0    1               4         10         - 50000.
+...      ...  ...             ...        ...              ...
+4142233   88    1               2         15          50000+.
+4142234   90    1               4         15         - 50000.
+4142235   90    1               2         15          50000+.
+4142236   90    1               2         15          50000+.
+4142237   90    0               4         15          50000+.
+
+[4142238 rows x 5 columns] gffffgg
+[2023-03-29T10:57:42.909+0000] {logging_mixin.py:137} INFO -          age  sex  marital_status  education  tax_filer_status
+0          0    1               4         10                 0
+1          0    1               4         10                 0
+2          0    1               4         10                 0
+3          0    0               4         10                 0
+4          0    1               4         10                 0
+...      ...  ...             ...        ...               ...
+4142233   88    1               2         15                 1
+4142234   90    1               4         15                 0
+4142235   90    1               2         15                 1
+4142236   90    1               2         15                 1
+4142237   90    0               4         15                 1
+
+[4142238 rows x 5 columns] gffffgg
+[2023-03-29T10:57:43.367+0000] {python.py:177} INFO - Done. Returned value was: None
+[2023-03-29T10:57:43.444+0000] {taskinstance.py:1326} INFO - Marking task as SUCCESS. dag_id=my_dag, task_id=load_predict, execution_date=20230329T102500, start_date=20230329T103045, end_date=20230329T105743
+[2023-03-29T10:57:44.584+0000] {local_task_job.py:212} INFO - Task exited with return code 0
+[2023-03-29T10:57:44.802+0000] {taskinstance.py:2585} INFO - 0 downstream tasks scheduled from follow-on schedule check

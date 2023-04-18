@@ -1,0 +1,7 @@
+[2023-03-30T00:00:14.419+0000] {processor.py:153} INFO - Started process (PID=247) to work on /opt/airflow/dags/test.py
+[2023-03-30T00:00:14.427+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/test.py for tasks to queue
+[2023-03-30T00:00:14.433+0000] {logging_mixin.py:137} INFO - [2023-03-30T00:00:14.432+0000] {dagbag.py:532} INFO - Filling up the DagBag from /opt/airflow/dags/test.py
+[2023-03-30T00:00:17.196+0000] {processor.py:753} INFO - DAG(s) dict_keys(['tax_income']) retrieved from /opt/airflow/dags/test.py
+[2023-03-30T00:00:17.331+0000] {logging_mixin.py:137} INFO - [2023-03-30T00:00:17.330+0000] {dag.py:2693} INFO - Sync 1 DAGs
+[2023-03-30T00:00:17.402+0000] {logging_mixin.py:137} INFO - [2023-03-30T00:00:17.401+0000] {dag.py:3444} INFO - Setting next_dagrun for tax_income to 2023-03-29T05:00:00+00:00, run_after=2023-03-30T05:00:00+00:00
+[2023-03-30T00:00:17.439+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/test.py took 3.033 seconds
